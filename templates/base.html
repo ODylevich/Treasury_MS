@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Treasury Microservice{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/rakbank_logo.png') }}" alt="RakBank" />
+        <h1>Treasury Microservice</h1>
+    </header>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Overview dashboard</a></li>
+                <li><a href="#" class="active">Promocodes management</a></li>
+                <li><a href="#">Client management</a></li>
+            </ul>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/segmentManagement.js') }}"></script>
+</body>
+</html>

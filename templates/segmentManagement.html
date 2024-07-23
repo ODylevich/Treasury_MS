@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Promocodes Management{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/segmentManagement.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="create-segment">
+    <h2>Create new promocode</h2>
+    <form id="create-segment-form" action="/create_promo" method="POST">
+        <label for="promo-name">Promocode name:</label>
+        <input type="text" id="promo-name" name="promo-name" placeholder="Enter promocode name" required>
+        <label for="valid-till">Valid till:</label>
+        <div class="date-picker-wrapper">
+            <input type="date" id="valid-till" name="valid-till" placeholder="e.g. 12/02/2023">
+            <button type="button" id="clear-date" aria-label="Clear date">Clear date</button>
+        </div>
+        <p id="date-message" style="color: red; display: none;"></p>
+        <label for="max-trades">Max # trades:</label>
+        <input type="number" id="max-trades" name="max-trades" placeholder="Enter a number">
+        <label for="valid-ccy-pairs">Valid ccy pairs:</label>
+        <input type="text" id="valid-ccy-pairs" name="valid-ccy-pairs" placeholder="Added currency pairs" readonly>
+        <a href="#" id="add-ccy-pairs-link">Add currency pairs</a>
+        <button type="submit" id="create-promo-button">Create</button>
+    </form>
+</section>
+<section>
+    <h2>Search for a segment / promo</h2>
+    <form id="search-segment-form">
+        <input type="text" id="search-name" name="search-name" placeholder="Search by Name">
+        <button type="button" id="filter-btn">Filter</button>
+        <button type="button" id="clear-filters-btn">Clear filters</button>
+        <button type="submit">Search</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Creation date</th>
+                <th>Status</th>
+                <th>Created by</th>
+                <th>Valid till</th>
+                <th>Max # trades</th>
+                <th>Valid ccy pairs</th>
+                <th># of Clients</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+</section>
+
+<!-- Modal for currency pairs -->
+<div id="ccy-pairs-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <div class="modal-left">
+                <input type="text" id="search-pairs" placeholder="Search currency pair">
+                <div id="currency-pairs-container" class="currency-pairs">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+            <div class="modal-right">
+                <h4>Selected currency pairs</h4>
+                <div class="selected-pairs-container">
+                    <div class="selected-pairs"></div>
+                </div>
+                <button type="button" id="ccy-pairs-submit">Select</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

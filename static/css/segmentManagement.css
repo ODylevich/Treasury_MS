@@ -1,0 +1,222 @@
+main {
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+section {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-segment {
+    max-width: 600px;
+    margin-left: 0px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-segment h2 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    margin: 0 0 15px;
+}
+
+.create-segment form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Optional: Style for date input container */
+.date-picker-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#valid-till {
+    width: 100%;
+}
+
+
+#clear-date {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    font-size: 16px;
+}
+
+
+.create-segment form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.create-segment form input, .create-segment form button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.create-segment form button {
+    background-color: #f04e23;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    width: 20%;
+}
+
+.create-segment form button:hover {
+    background-color: #d0431e;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Basic modal configuration */
+body.modal-open {
+    overflow: hidden; /* Disable scrolling on the background page when the modal is open */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 50%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.modal-left {
+    width: 70%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#search-pairs {
+    width: 50%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.currency-pair {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 3px 0;
+}
+
+.currency-pair input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: black;
+    width: 15px;
+    height: 15px;
+}
+
+.currency-pair label:first-of-type {
+    font-size: 14px;
+    color: black;
+}
+
+.currency-pair label:last-of-type {
+    font-size: 12px;
+    color: #888;
+    position: absolute;
+    left: 20%;
+}
+
+.selected-pairs-container, #currency-pairs-container {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #ddd;
+    flex-grow: 1;
+}
+
+.modal-right {
+    width: 30%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#ccy-pairs-submit {
+    position: absolute;
+    bottom: 10px; /* Adjust to add space from the bottom */
+    right: 10px; /* Adjust to add space from the right */
+    padding: 10px 20px; /* Add padding to the button */
+}
+
+.modal-right h4 {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.selected-pairs {
+    flex: 1;
+    overflow-y: auto;
+}
+
+
+.modal .close {
+    cursor: pointer; /* Pointer cursor indicates a clickable element */
+}
