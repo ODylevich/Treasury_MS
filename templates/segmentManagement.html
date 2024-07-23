@@ -9,6 +9,17 @@
 {% block content %}
 <section class="create-segment">
     <h2>Create new promocode</h2>
+
+    <!-- Display success message -->
+    {% if message %}
+    <div class="message success">{{ message }}</div>
+    {% endif %}
+
+    <!-- Display error message -->
+    {% if error %}
+    <div class="message error">{{ error }}</div>
+    {% endif %}
+
     <form id="create-segment-form" action="/create_promo" method="POST">
         <label for="promo-name">Promocode name:</label>
         <input type="text" id="promo-name" name="promo-name" placeholder="Enter promocode name" required>

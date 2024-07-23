@@ -220,3 +220,20 @@ body.modal-open {
 .modal .close {
     cursor: pointer; /* Pointer cursor indicates a clickable element */
 }
+
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 16;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
