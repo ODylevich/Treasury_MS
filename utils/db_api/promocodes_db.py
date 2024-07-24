@@ -19,7 +19,6 @@ class PromocodeTable(db.Model):
 
 
 class PromocodeTableService:
-
     @staticmethod
     def create_promocode(name, valid_till, max_trades, valid_ccy_pairs):
         valid_till = valid_till if valid_till else None
@@ -33,7 +32,6 @@ class PromocodeTableService:
             valid_ccy_pairs=valid_ccy_pairs
         )
 
-        # Add to session and commit
         try:
             # Add to session and commit
             db.session.add(new_promocode)

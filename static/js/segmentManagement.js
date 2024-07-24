@@ -1,3 +1,34 @@
+document.getElementById('create-segment-form').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent the default form submission
+
+    const formData = new FormData(event.target);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    fetch('/create_promo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            // Redirect to segment management page with error message
+            window.location.href = `/segment-management?error=${encodeURIComponent(data.error)}`;
+        } else {
+            // Redirect to segment management page with success message
+            window.location.href = `/segment-management?message=${encodeURIComponent(data.message)}`;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const dateInput = document.getElementById('valid-till');
     const message = document.getElementById('date-message');
