@@ -22,6 +22,7 @@ class PromocodeTableService:
     @staticmethod
     def create_promocode(name, valid_till, max_trades, valid_ccy_pairs):
         valid_till = valid_till if valid_till else None
+        print(f'valid till type: {type(valid_till)}')
         max_trades = int(max_trades) if max_trades else None
 
         # Create a new Promocode instance

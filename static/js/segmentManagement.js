@@ -3,9 +3,32 @@ document.getElementById('create-segment-form').addEventListener('submit', functi
 
     const formData = new FormData(event.target);
     const data = {};
+
     formData.forEach((value, key) => {
-        data[key] = value;
+        if (key === 'max-trades') {
+            data[key] = parseInt(value, 10);  // Convert to integer
+        } else if (key === 'valid-till') {
+            if (value) {
+                const validTillDate = new Date(value);
+                data[key] = validTillDate.toISOString().split('T')[0]; // Send as ISO string if provided
+            } else {
+                data[key] = null; // Handle optional field
+            }
+        } else {
+            data[key] = value;
+        }
     });
+
+    // Validate the currency pairs field
+    const ccyPairsValue = document.getElementById('valid-ccy-pairs').value;
+    const ccyPairsMessage = document.getElementById('ccy-pairs-message');
+
+    if (!ccyPairsValue.trim()) {
+        ccyPairsMessage.style.display = 'inline'; // Show the inline message
+        return; // Prevent form submission
+    } else {
+        ccyPairsMessage.style.display = 'none'; // Hide the inline message
+    }
 
     fetch('/create_promo', {
         method: 'POST',
@@ -144,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
     function updateSelectedPairs() {
         var selectedPairsHtml = '<ol>'; // Start numbered list
         document.querySelectorAll('input[name="ccy-pair"]:checked').forEach(function(checkbox) {
@@ -153,8 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedPairsHtml += '</ol>'; // End numbered list
         selectedPairsContainer.innerHTML = selectedPairsHtml;
     }
-
-
 
     // Filter currency pairs based on search input
     searchInput.addEventListener('input', function() {

@@ -32,7 +32,8 @@
         <label for="max-trades">Max # trades:</label>
         <input type="number" id="max-trades" name="max-trades" placeholder="Enter a number">
         <label for="valid-ccy-pairs">Valid ccy pairs:</label>
-        <input type="text" id="valid-ccy-pairs" name="valid-ccy-pairs" placeholder="Added currency pairs" readonly>
+        <input type="text" id="valid-ccy-pairs" name="valid-ccy-pairs" placeholder="Added currency pairs" readonly required>
+        <span id="ccy-pairs-message" style="color: red; display: none;">Please select currency pairs.</span>
         <a href="#" id="add-ccy-pairs-link">Add currency pairs</a>
         <button type="submit" id="create-promo-button">Create</button>
     </form>
