@@ -3,8 +3,9 @@ from config import Config
 from utils.db_api.promocodes_db import db
 import os
 from flask_restx import Api, Resource, fields
-from flask import request, redirect, make_response, render_template
+from flask import request, redirect, make_response, render_template, jsonify
 from utils.db_api.promocodes_db import PromocodeTableService
+
 
 def create_app():
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,9 +76,26 @@ def create_app():
             # Return a success message
             return {"message": "Promocode created successfully!"}, 201
 
+    class PromocodeResource(Resource):
+        def get(self):
+            """
+            Get all promocodes or search promocodes by name.
+            Query parameter:
+            - query: Search term for filtering promocodes by name
+            """
+            query = request.args.get('query')
+            if query:
+                promocodes = PromocodeTableService.search_promocode_by_name(query)
+            else:
+                promocodes = PromocodeTableService.get_all_promocodes()
+            print(f'promocodes: {promocodes}')
+            print(f'json promocods: {jsonify(promocodes)}')
+            return jsonify(promocodes)
+
     # Add resources to API
     api.add_resource(SegmentManagementResource, '/segment-management', endpoint='segment_management_resource')
     api.add_resource(CreatePromoResource, '/create_promo', endpoint='create_promo')
+    api.add_resource(PromocodeResource, '/promocodes', endpoint='promocode_resource')
 
     return app
 

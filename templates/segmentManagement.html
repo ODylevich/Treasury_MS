@@ -38,13 +38,15 @@
         <button type="submit" id="create-promo-button">Create</button>
     </form>
 </section>
-<section>
-    <h2>Search for a segment / promo</h2>
+<section class="search-promocode">
+    <h2>Search for a promocode</h2>
     <form id="search-segment-form">
         <input type="text" id="search-name" name="search-name" placeholder="Search by Name">
-        <button type="button" id="filter-btn">Filter</button>
-        <button type="button" id="clear-filters-btn">Clear filters</button>
-        <button type="submit">Search</button>
+        <div class="search-buttons">
+            <button type="button" id="filter-btn">Filter</button>
+            <button type="button" id="clear-filters-btn">Clear filters</button>
+            <button type="submit">Search</button>
+        </div>
     </form>
     <table>
         <thead>
@@ -87,4 +89,7 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
 {% endblock %}
