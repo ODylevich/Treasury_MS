@@ -39,6 +39,14 @@ def create_app():
     class SegmentManagementResource(Resource):
         @api.doc('get_segment_management')
         def get(self):
+            """
+            Redirect to segment management page.
+            Message parameter:
+            - message: Display success message in Promocode creation form
+
+             Error parameter:
+            - error: Display error in Promocode creation form
+            """
             message = request.args.get('message')
             error = request.args.get('error')
             return make_response(render_template('segmentManagement.html', message=message, error=error))
