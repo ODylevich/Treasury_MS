@@ -58,6 +58,16 @@ error_model = api.model('Error', {
 })
 
 
+class DashboardResource(Resource):
+    def get(self):
+        return make_response(render_template('dashboard.html'))
+
+
+class ClientManagementResource(Resource):
+    def get(self):
+        return make_response(render_template('clientManagement.html'))
+
+
 class SegmentManagementResource(Resource):
     @api.doc('get_segment_management')
     def get(self):
@@ -136,4 +146,5 @@ class PromocodeResource(Resource):
 # Add resources to API
 api.add_resource(SegmentManagementResource, '/segment-management', endpoint='segment_management_resource')
 api.add_resource(PromocodeResource, '/promocode', endpoint='promocode_resource')
-
+api.add_resource(ClientManagementResource, '/client-management', endpoint='client_management_resource')
+api.add_resource(DashboardResource, '/overview-dashboard', endpoint='dashboard_resource')

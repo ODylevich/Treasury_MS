@@ -47,8 +47,11 @@
             <button type="button" id="clear-filters-btn">Clear filters</button>
             <button type="submit">Search</button>
         </div>
+        <div class="download-button">
+            <button type="button" id="download-btn" disabled>Download Excel</button>
+        </div>
     </form>
-    <table>
+    <table id="promocode-data-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -92,4 +95,5 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="{{ url_for('static', filename='js/segmentManagement.js') }}"></script>
 {% endblock %}

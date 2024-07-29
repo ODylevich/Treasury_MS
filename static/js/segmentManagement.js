@@ -365,6 +365,7 @@ document.getElementById('search-segment-form').addEventListener('submit', functi
                 data.forEach((promocode, index) => {
                     // Helper function to render table cell content
                     const renderCell = (value) => value == null ? '' : value;
+                    const renderNumClientsCell = (value) => value == null ? 0 : value
                     const row = document.createElement('tr');
 
                     row.innerHTML = `
@@ -376,7 +377,7 @@ document.getElementById('search-segment-form').addEventListener('submit', functi
                         <td>${renderCell(promocode.valid_till)}</td>
                         <td>${renderCell(promocode.max_trades)}</td>
                         <td>${renderCell(promocode.valid_ccy_pairs)}</td>
-                        <td>${renderCell(promocode.num_clients)}</td>
+                        <td>${renderNumClientsCell(promocode.num_clients)}</td>
                     `;
                     searchResults.appendChild(row);
                 });
