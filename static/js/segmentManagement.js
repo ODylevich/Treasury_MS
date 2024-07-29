@@ -30,7 +30,7 @@ document.getElementById('create-segment-form').addEventListener('submit', functi
         ccyPairsMessage.style.display = 'none'; // Hide the inline message
     }
 
-    fetch('/create_promo', {
+    fetch('/promocode', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -341,14 +341,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Promocodes search button
 
 document.getElementById('search-segment-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the form from submitting the default way
-    console.log('Endpoint:');
     const searchResults = document.querySelector('.search-promocode tbody');
 
     const query = document.getElementById('search-name').value; // Get the value of the input
-    const endpoint = query ? `/promocodes?query=${encodeURIComponent(query)}` : '/promocodes'; // Construct the endpoint URL
+    const endpoint = query ? `/promocode?query=${encodeURIComponent(query)}` : '/promocode'; // Construct the endpoint URL
 
 
     // Perform the API call
@@ -363,8 +363,6 @@ document.getElementById('search-segment-form').addEventListener('submit', functi
                 searchResults.innerHTML = '<tr><td colspan="9">No results found.</td></tr>';
             } else {
                 data.forEach((promocode, index) => {
-                    console.log(promocode.valid_ccy_pairs);
-                    console.log('Type of valid_ccy_pairs:', typeof promocode.valid_ccy_pairs);
                     // Helper function to render table cell content
                     const renderCell = (value) => value == null ? '' : value;
                     const row = document.createElement('tr');
@@ -385,7 +383,15 @@ document.getElementById('search-segment-form').addEventListener('submit', functi
             }
         })
         .catch(error => {
-            console.error('Error:', error);
-            searchResults.innerHTML = '<tr><td colspan="9">An error occurred while searching. Please try again later.</td></tr>';
+            // Extract error message from the error object if possible
+            let errorMessage = 'An error occurred while searching. Please try again later.';
+            if (error && error.response && error.response.data && error.response.data.error) {
+                errorMessage = error.response.data.error;  // Extracting specific error message from API response
+            } else if (error.message) {
+                errorMessage = error.message;  // Extracting general error message
+            }
+
+            // Display the error message in the table
+            searchResults.innerHTML = `<tr><td colspan="9">${errorMessage}</td></tr>`;
         });
 });

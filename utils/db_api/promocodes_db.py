@@ -1,18 +1,13 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 
-# Initialize SQLAlchemy
-db = SQLAlchemy()
-
-from datetime import datetime
-
-
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 
 # Initialize SQLAlchemy
 db = SQLAlchemy()
+
 
 class PromocodeTable(db.Model):
     __tablename__ = 'promocodes'
