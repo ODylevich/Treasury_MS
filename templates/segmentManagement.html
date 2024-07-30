@@ -95,5 +95,8 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="{{ url_for('static', filename='js/libs/xlsx/dist/xlsx.full.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/segmentManagement.js') }}"></script>
 {% endblock %}
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/xlsx@0.16.9/dist/xlsx.full.min.js"></script> -->

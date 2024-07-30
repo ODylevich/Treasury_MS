@@ -1,0 +1,162 @@
+/* Clients management section */
+h2 {
+    margin-top: 5px;
+    margin-bottom: 5px; /* Reduce space below the heading */
+}
+
+.client-management-buttons {
+    display: flex;
+    justify-content: left; /* Center align the sections */
+    align-items: center; /* Align items vertically centered */
+    gap: 20px; /* Reduce the space between sections */
+    margin-top: 0px; /* Reduce space above the buttons */
+    margin-bottom: 20px; /* Margin below buttons if needed */
+}
+
+.client-upload-section, .client-delete-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    width: 150px; /* Fixed width for consistency */
+}
+
+.client-upload-section label, .client-delete-section label {
+    margin-bottom: 10px; /* Add space between label and button */
+}
+
+.client-management-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.client-upload-section button {
+    background-color: #28a745; /* Green color for upload button */
+    color: white; /* Button text color */
+}
+
+.client-delete-section button {
+    background-color: #dc3545; /* Red color for delete button */
+    color: white; /* Button text color */
+}
+
+.client-management-buttons button:hover {
+    opacity: 0.8; /* Slightly change opacity on hover for both buttons */
+}
+
+
+/* Clients search section */
+#search-clients-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#search-clients-form input[type="text"] {
+    flex: 0 0 20%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Styling for the button container */
+.clinets-search-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 10px; /* Space below the buttons */
+}
+
+/* Common button styling */
+.clients-search-buttons button {
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Filter button styling */
+.clients-search-buttons #filter-btn {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark text color for contrast */
+}
+
+.clients-search-buttons #filter-btn:hover {
+    background-color: #e0e0e0; /* Slightly darker grey on hover */
+}
+
+/* Clear filters button styling */
+.clients-search-buttons #clear-filters-btn {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark text color for contrast */
+}
+
+.clients-search-buttons #clear-filters-btn:hover {
+    background-color: #e0e0e0; /* Slightly darker grey on hover */
+}
+
+/* Search button styling */
+.clients-search-buttons button[type="submit"] {
+    background-color: #f04e23;
+    color: white; /* White text color */
+}
+
+.clients-search-buttons button[type="submit"]:hover {
+    background-color: #d0431e;
+}
+
+.download-button {
+    display: flex;
+    margin-left: auto;
+}
+
+/* Table styling */
+#clients-data-table {
+    width: 100%; /* Make sure table takes full width of its container */
+    border-collapse: collapse; /* Collapse borders for cleaner look */
+}
+
+/* Header and cell styling */
+#clients-data-table th,
+#clients-data-table td {
+    border: 1px solid #ddd; /* Light border for cells */
+    padding: 8px; /* Padding inside cells */
+    text-align: center; /* Align text to the center */
+    font-size: 14px;
+}
+
+#clients-data-table th {
+    background-color: #f2f2f2; /* Light grey background */
+    color: #333; /* Dark text color for contrast */
+    font-size: 14px; /* Smaller font size for headers */
+    padding: 10px; /* Padding inside header cells */
+    text-align: center; /* Align text to the center */
+    border: 1px solid #ddd; /* Light border for header cells */
+}
+
+/* Fixed width for the first  columns */
+#clients-data-table th:nth-child(1),
+#clients-data-table td:nth-child(1) {
+    width: 50px; /* Adjust width as needed */
+    text-align: center; /* Center align text in fixed-width columns */
+}
+
+/* Fixed width for the last columns */
+#clients-data-table th:nth-child(8),
+#clients-data-table td:nth-child(8) {
+    width: 150px; /* Adjust width as needed */
+    text-align: center; /* Center align text in fixed-width columns */
+}
+
+/* Evenly distribute width for remaining columns */
+#clients-data-table th:not(:nth-child(1)):not(:nth-child(8)),
+#clients-data-table td:not(:nth-child(1)):not(:nth-child(8)) {
+    width: calc((100% - 200px) / 6); /* Total width minus the fixed-width columns, divided by the number of remaining columns */
+}

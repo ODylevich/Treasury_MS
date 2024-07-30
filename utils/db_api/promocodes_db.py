@@ -1,12 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.exc import IntegrityError
-
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
-
-# Initialize SQLAlchemy
-db = SQLAlchemy()
+from utils.db_api.database_connection import db
 
 
 class PromocodeTable(db.Model):
@@ -39,7 +33,6 @@ class PromocodeTable(db.Model):
             'status': self.promocode_status,
             'creator': self.promocode_creator
         }
-
 
 
 class PromocodeTableService:

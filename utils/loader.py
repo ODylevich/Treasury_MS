@@ -1,7 +1,7 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, redirect
 from config import Config
-from utils.db_api.promocodes_db import db
 import os
+from utils.db_api.database_connection import db
 
 
 def create_app():
@@ -11,7 +11,7 @@ def create_app():
                 static_folder=os.path.join(root_path, 'static'))
     app.config.from_object(Config)
 
-    # Initialize SQLAlchemy
+
     db.init_app(app)
 
     # Create tables
@@ -27,5 +27,5 @@ def create_app():
     return app
 
 
-app = create_app()
+app= create_app()
 
