@@ -50,3 +50,8 @@
     </table>
 </section>
 {% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/libs/xlsx/dist/xlsx.full.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/clientManagement.js') }}"></script>
+{% endblock %}

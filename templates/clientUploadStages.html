@@ -1,0 +1,59 @@
+<!-- templates/clientUploadStages.html -->
+{% extends "base.html" %}
+
+{% block title %}Client Upload Stages{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/clientUploadStages.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="back-button">
+    <button onclick="history.back()">&larr; Back</button>
+</div>
+<h2>Client Upload Stages</h2>
+<div class="step-1">
+    <h3>Step 1</h3>
+    <label for="select-promocode">Choose an existing promocode to populate with new Clients.</label>
+    <div class="promocode-selection">
+        <button type="button" id="select-promocode">Select promocode</button>
+        <label>Selected promocode:</label>
+        <label id="selected-promocode">Empty</label>
+    </div>
+</div>
+<div class="step-2">
+    <h3>Step 2</h3>
+    <label for="select-promocode">Choose a file to upload. Acceptable file format:</label>
+    <div class="upload-clients-file">
+        <!-- Hidden file input -->
+        <input type="file" id="file-input" style="display: none;">
+        <button type="button" id="upload-clients-file">Select file</button>
+        <label>Selected file:</label>
+        <label id="selected-file">Empty</label>
+    </div>
+</div>
+<div class="step-3">
+    <h3>Step 3</h3>
+    <label for="review-client-upload">Review and confirm</label>
+    <button type="button" id="review-client-upload">Review and confirm</button>
+</div>
+<div id="warning-label" style="display: none; color: red;">
+    Please select a file and a promocode before proceeding.
+</div>
+
+<!-- Modal Structure -->
+<div id="promocode-selection-modal" class="modal">
+    <div class="promocode-selection-modal-content">
+        <span class="close">&times;</span>
+        <input type="text" id="search-promocode" placeholder="Search for promocode...">
+        <ul id="promocode-list">
+            <!-- List of promocodes will be populated here -->
+        </ul>
+        <button type="button" id="select-promocode-btn">Select</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/clientUploadStages.js') }}"></script>
+{% endblock %}

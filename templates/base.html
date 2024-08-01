@@ -15,9 +15,15 @@
     <div class="container">
         <nav>
             <ul>
-                <li><a href="/overview-dashboard" class="{% if request.path == '/overview-dashboard' %}active{% endif %}">Overview dashboard</a></li>
-                <li><a href="/segment-management" class="{% if request.path == '/segment-management' %}active{% endif %}">Promocodes management</a></li>
-                <li><a href="/client-management" class="{% if request.path == '/client-management' %}active{% endif %}">Client management</a></li>
+                <li>
+                    <a href="/overview-dashboard" class="{% if request.path == '/overview-dashboard' %}active{% endif %}">Overview dashboard</a>
+                </li>
+                <li>
+                    <a href="/segment-management" class="{% if request.path == '/segment-management' %}active{% endif %}">Promocodes management</a>
+                </li>
+                <li>
+                    <a href="/client-management" class="{% if request.path.startswith('/client-management') %}active{% endif %}">Client management</a>
+                </li>
             </ul>
         </nav>
         <main>
