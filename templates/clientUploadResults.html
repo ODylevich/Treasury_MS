@@ -8,6 +8,13 @@
 
 {% block content %}
 <h2>Upload Results</h2>
-<div id="results-message"></div>
-<div id="row-count"></div>
+<div id="results-message" class="message-label"></div>
+<div class="results-body">
+    <div id="row-count"></div>
+    <div id="conflict-cases"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/clientUploadResults.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,49 @@
+.message-label {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.message-label.success {
+    color: green;
+}
+
+.message-label.error {
+    color: red;
+}
+
+.results-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#row-count {
+    font-size: 1em;
+}
+
+#row-count div {
+    margin-bottom: 0.5em;
+}
+
+.conflict-case {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.conflict-case .details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+}
+
+.conflict-case strong {
+    margin-right: 0.5em;
+}
+
+.conflict-case div {
+    margin-bottom: 0.5em;
+}

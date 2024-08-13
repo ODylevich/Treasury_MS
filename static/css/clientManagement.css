@@ -121,6 +121,7 @@ h2 {
 #clients-data-table {
     width: 100%; /* Make sure table takes full width of its container */
     border-collapse: collapse; /* Collapse borders for cleaner look */
+    margin-bottom: 40px;
 }
 
 /* Header and cell styling */

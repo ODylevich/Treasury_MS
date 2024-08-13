@@ -60,3 +60,40 @@ document.getElementById('search-clients-form').addEventListener('submit', functi
             searchResults.innerHTML = `<tr><td colspan="9">${errorMessage}</td></tr>`;
         });
 });
+
+
+// Download excel button
+document.addEventListener("DOMContentLoaded", function() {
+    const downloadBtn = document.getElementById("download-btn");
+    const dataTable = document.getElementById("clients-data-table");
+    const searchResults = dataTable.querySelector("tbody");
+
+    function updateDownloadButtonState() {
+        // Check if table has data rows
+        const rows = searchResults.querySelectorAll("tr");
+        const noResultsFound = rows.length === 1 && (rows[0].textContent.includes("No results found.") || rows[0].textContent.includes("An error occurred while searching."));
+        if (rows.length > 0 && !noResultsFound) {
+            downloadBtn.disabled = false; // Enable button if there are data rows
+        } else {
+            downloadBtn.disabled = true; // Disable button if no data rows or if there are messages
+        }
+    }
+
+    function downloadTableAsExcel() {
+        const wb = XLSX.utils.table_to_book(dataTable, { sheet: "Sheet1" });
+        XLSX.writeFile(wb, "clients_table_data.xlsx");
+    }
+
+    // Event listener for the download button
+    downloadBtn.addEventListener("click", downloadTableAsExcel);
+
+    // Initial call to set the button state
+    updateDownloadButtonState();
+
+        // Use MutationObserver to watch for changes in the table's tbody
+    const observer = new MutationObserver(updateDownloadButtonState);
+    observer.observe(dataTable.querySelector('tbody'), {
+        childList: true, // Watch for additions or removals of child elements
+    });
+
+});
